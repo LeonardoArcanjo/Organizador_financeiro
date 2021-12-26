@@ -3,27 +3,24 @@ Main.py - Testando a Classe e o banco de Dados
 """
 
 from Classes.financeObj import finance
-from Context.Mongo_Context import connectar, desconnect
+from Context.Mongo_Context import insert, list
 
 def main():
-    # print("Creating a object....")
+    
+    print("Criando um objeto: ")
+    nome: str = input("Digite o nome: ")
+    valor: float = float(input("Digite o valor R$: "))
+    categoria: str = input("Digite a categoria do objeto: ")
+    parcelas: str = input("Digite a quantidade de parcelas ou 'fixo': ")
 
-    # firstObject: finance = finance("Salario", 4500, "Renda", "")
+    firstObject: finance = finance(nome, valor, categoria, parcelas)
+    
+    print("Salvando no Banco...")
 
-    # print(firstObject)
+    insert(firstObject.name, firstObject.value, firstObject.category, firstObject.numberInstalment)
 
-    print("Creating a DB connect...")
-
-    mongo = connectar()
-
-    print(f"Object mongo: {mongo}")
-
-    mongo = desconnect(mongo)
-
-    print(f"Object mongo: {mongo}")
-
-
-
+    print("\n\nlistando o banco...")
+    list()
 
 if "__main__" == __name__:
     main()

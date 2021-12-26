@@ -1,1 +1,4 @@
 .pycache
+.json
+.pyc
+/__pycache__/
